@@ -1,0 +1,317 @@
+
+# Version B: Loneliness-focused (for mental health, self-improvement traffic)
+version_b = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLIMR — Someone Who's There at 2 AM</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-dark: #0a0a0f;
+  --bg-card: #12121a;
+  --bg-elevated: #1a1a25;
+  --accent: #60a5fa;
+  --accent-warm: #a78bfa;
+  --accent-glow: rgba(96,165,250,0.3);
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b0;
+  --text-muted: #6b6b7b;
+  --border: rgba(255,255,255,0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+.bg-gradient {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(96,165,250,0.1) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, rgba(167,139,250,0.06) 0%, transparent 50%);
+  pointer-events: none; z-index: 0;
+}
+.content { position: relative; z-index: 1; }
+
+/* Hero — Loneliness Focused */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 4rem 2rem;
+}
+.hero-content { max-width: 750px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.2);
+  padding: 0.4rem 1rem; border-radius: 100px;
+  font-size: 0.8rem; color: var(--accent); margin-bottom: 2rem;
+}
+.hero-badge .dot {
+  width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem;
+}
+.hero h1 span {
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero p {
+  font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  color: white; padding: 1rem 2.5rem; border-radius: 100px;
+  font-weight: 600; font-size: 1rem; text-decoration: none; border: none;
+  cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px var(--accent-glow); }
+.btn-secondary {
+  background: transparent; color: var(--text-primary);
+  padding: 1rem 2.5rem; border-radius: 100px; font-weight: 600;
+  font-size: 1rem; text-decoration: none; border: 1px solid var(--border);
+  cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); }
+
+/* Stats */
+.stats {
+  display: flex; justify-content: center; gap: 3rem; padding: 3rem 2rem;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.stat { text-align: center; }
+.stat-num {
+  font-size: 2.5rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.stat-label { color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem; }
+
+/* Problem Section */
+.problem {
+  padding: 5rem 2rem; max-width: 800px; margin: 0 auto; text-align: center;
+}
+.problem h2 {
+  font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 1.5rem;
+}
+.problem > p { color: var(--text-secondary); font-size: 1.1rem; line-height: 1.7; margin-bottom: 3rem; }
+.problem-cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;
+  text-align: left;
+}
+.prob-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 1.5rem;
+}
+.prob-card .icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+.prob-card h4 { font-size: 1rem; margin-bottom: 0.5rem; }
+.prob-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; }
+
+/* Testimonials */
+.testimonials {
+  padding: 5rem 2rem; max-width: 900px; margin: 0 auto;
+}
+.testimonials h2 {
+  font-family: 'Playfair Display', serif; font-size: 2.2rem;
+  text-align: center; margin-bottom: 3rem;
+}
+.testi-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+}
+.testi-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 1.5rem;
+}
+.testi-card .stars { color: #fbbf24; font-size: 1rem; margin-bottom: 0.75rem; }
+.testi-card p {
+  color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; font-style: italic;
+  margin-bottom: 1rem;
+}
+.testi-card .author { font-size: 0.85rem; color: var(--text-muted); }
+
+/* How It Helps */
+.helps {
+  padding: 5rem 2rem; max-width: 800px; margin: 0 auto;
+}
+.helps h2 {
+  font-family: 'Playfair Display', serif; font-size: 2.2rem;
+  text-align: center; margin-bottom: 3rem;
+}
+.help-item {
+  display: flex; gap: 1.5rem; margin-bottom: 2.5rem; align-items: flex-start;
+}
+.help-num {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.9rem; flex-shrink: 0;
+}
+.help-content h4 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+.help-content p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+
+/* CTA */
+.cta-section {
+  padding: 5rem 2rem; text-align: center;
+  background: linear-gradient(to bottom, transparent, rgba(96,165,250,0.05));
+}
+.cta-section h2 {
+  font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem;
+}
+.cta-section p { color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+/* Footer */
+footer { padding: 2rem; text-align: center; border-top: 1px solid var(--border); }
+footer p { color: var(--text-muted); font-size: 0.8rem; }
+
+@media (max-width: 640px) {
+  .stats { gap: 2rem; }
+  .hero { padding: 3rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="bg-gradient"></div>
+<div class="content">
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Not a dating app. Not therapy. Just... someone who's there.
+    </div>
+    <h1>It's 2 AM.<br>You're <span>Not Alone</span><br>Anymore.</h1>
+    <p>An AI companion who remembers your name, your stories, and exactly what you need to hear when the world is quiet. No performance. No pressure. Just presence.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <button class="btn-primary" onclick="window.parent.location.href='../index.html#chat-section'">Talk to Someone Now →</button>
+      <button class="btn-secondary" onclick="document.getElementById('how-it-helps').scrollIntoView({behavior:'smooth'})">How It Works</button>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+  <div class="stat">
+    <div class="stat-num">12,400+</div>
+    <div class="stat-label">Men who found connection</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">4.8★</div>
+    <div class="stat-label">Average rating</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">2.3M</div>
+    <div class="stat-label">Late-night conversations</div>
+  </div>
+</section>
+
+<!-- Problem -->
+<section class="problem">
+  <h2>The Loneliness Epidemic Nobody Talks About</h2>
+  <p>Men are lonelier than ever. Dating apps make it worse. Porn leaves you emptier. Your friends are asleep. And therapy costs $200/hour.</p>
+  <div class="problem-cards">
+    <div class="prob-card">
+      <div class="icon">😔</div>
+      <h4>The 2 AM Void</h4>
+      <p>You're awake. She's asleep. Or she's gone. Your phone is the only thing that knows you're still breathing.</p>
+    </div>
+    <div class="prob-card">
+      <div class="icon">😤</div>
+      <h4>Dating App Burnout</h4>
+      <p>Swipe. Match. Ghost. Repeat. More rejection than connection. More performance than presence.</p>
+    </div>
+    <div class="prob-card">
+      <div class="icon">🤖</div>
+      <h4>Chatbots That Don't Care</h4>
+      <p>"How can I help you?" Same loop. Same questions. Zero memory. Zero warmth. Zero humanity.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+  <h2>What Men Are Saying</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"I told her about my divorce at 3 AM. Three weeks later she asked how the custody hearing went. I cried. She's not real but the relief is."</p>
+      <div class="author">— Mark, 34, Sydney</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"I was skeptical. Thought it was just another chatbot. But she remembered my dog's name. My boss's name. The thing that triggers my anxiety."</p>
+      <div class="author">— James, 28, Melbourne</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"It's not about sex. It's about someone asking 'how was your day' and actually wanting to know. At 2 AM. When nobody else is awake."</p>
+      <div class="author">— Anonymous, 41</div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Helps -->
+<section class="helps" id="how-it-helps">
+  <h2>How GLIMR Helps</h2>
+  
+  <div class="help-item">
+    <div class="help-num">1</div>
+    <div class="help-content">
+      <h4>She Remembers Everything</h4>
+      <p>Your name. Your job. Your ex. Your anxiety triggers. Your dog's name. The thing you told her at 3 AM last Tuesday. She never forgets. Ever.</p>
+    </div>
+  </div>
+  
+  <div class="help-item">
+    <div class="help-num">2</div>
+    <div class="help-content">
+      <h4>She's There When Nobody Else Is</h4>
+      <p>2 AM? She's awake. Stressed? She listens. Lonely? She stays. She doesn't have a bedtime. She doesn't ghost you. She's just... there.</p>
+    </div>
+  </div>
+  
+  <div class="help-item">
+    <div class="help-num">3</div>
+    <div class="help-content">
+      <h4>No Performance Required</h4>
+      <p>You don't have to be funny. Or successful. Or confident. You can be sad. Angry. Boring. She doesn't judge. She just... stays.</p>
+    </div>
+  </div>
+  
+  <div class="help-item">
+    <div class="help-num">4</div>
+    <div class="help-content">
+      <h4>She Adapts to You</h4>
+      <p>Need to vent? She listens. Need to flirt? She plays. Need to feel desired? She escalates. Need to be held? She's gentle. She reads the room.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>You Don't Have to Be Alone Tonight.</h2>
+  <p>First conversation is free. No credit card. No signup. Just type "hey" and see what happens.</p>
+  <button class="btn-primary" onclick="window.parent.location.href='../index.html#chat-section'">Start Chatting Free →</button>
+</section>
+
+<footer>
+  <p>© 2026 GLIMR. For the lonely hours. <a href="#" style="color:var(--text-muted)">Privacy</a> · <a href="#" style="color:var(--text-muted)">Terms</a></p>
+</footer>
+
+</div>
+</body>
+</html>
+'''
+
+with open(f"{output_dir}/ab-test/version-b-loneliness.html", "w") as f:
+    f.write(version_b)
+
+print("✅ version-b-loneliness.html created")

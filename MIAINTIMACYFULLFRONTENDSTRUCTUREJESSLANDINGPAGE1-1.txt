@@ -1,0 +1,5 @@
+✅ index.html created (39,174 characters)
+<>:1196: SyntaxWarning: invalid escape sequence '\s'
+<>:1196: SyntaxWarning: invalid escape sequence '\s'
+/tmp/ipykernel_340/649750701.py:1196: SyntaxWarning: invalid escape sequence '\s'
+  wordCount: text.split(/\s+/).length

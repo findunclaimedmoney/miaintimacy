@@ -1,0 +1,38 @@
+
+# File 2: .env.example
+env_example = '''# GLIMR Companion Engine Environment Variables
+
+# Server
+PORT=3000
+NODE_ENV=development
+
+# MongoDB
+MONGODB_URI=mongodb://localhost:27017/glimr
+
+# OpenAI
+OPENAI_API_KEY=sk-your-openai-key-here
+OPENAI_MODEL=gpt-4o
+OPENAI_TEMPERATURE=0.85
+OPENAI_MAX_TOKENS=500
+
+# JWT
+JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+JWT_EXPIRES_IN=7d
+
+# Rate Limiting
+RATE_LIMIT_WINDOW_MS=900000
+RATE_LIMIT_MAX_REQUESTS=100
+
+# Logging
+LOG_LEVEL=info
+
+# Companion Settings
+DEFAULT_CHARACTER=mia
+MAX_MEMORY_ENTRIES=500
+MEMORY_DECAY_DAYS=30
+'''
+
+with open(f"{output_dir}/.env.example", "w") as f:
+    f.write(env_example)
+
+print(".env.example created")
