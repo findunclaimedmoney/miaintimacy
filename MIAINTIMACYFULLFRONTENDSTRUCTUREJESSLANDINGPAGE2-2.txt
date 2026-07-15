@@ -1,0 +1,4 @@
+✅ Images copied to images/ folder
+  - mia.png
+  - jess.png
+  - jess-video.mp4

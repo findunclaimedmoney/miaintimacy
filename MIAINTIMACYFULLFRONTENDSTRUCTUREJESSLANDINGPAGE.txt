@@ -1,0 +1,1456 @@
+
+import os
+
+output_dir = "/mnt/agents/output/glimr-landing-page"
+os.makedirs(output_dir, exist_ok=True)
+
+# The complete landing page - single HTML file with everything inline
+landing_page = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLIMR — AI Companions That Remember You</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-dark: #0a0a0f;
+  --bg-card: #12121a;
+  --bg-elevated: #1a1a25;
+  --accent: #ff6b9d;
+  --accent-warm: #f093fb;
+  --accent-glow: rgba(255,107,157,0.3);
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b0;
+  --text-muted: #6b6b7b;
+  --border: rgba(255,255,255,0.08);
+  --jess-accent: #c084fc;
+  --mia-accent: #ff6b9d;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Animated background */
+.bg-gradient {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(255,107,157,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(192,132,252,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(240,147,251,0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-stars {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.15), transparent),
+    radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.1), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.12), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.08), transparent),
+    radial-gradient(1px 1px at 160px 20px, rgba(255,255,255,0.1), transparent);
+  background-size: 200px 100px;
+  pointer-events: none;
+  z-index: 0;
+  animation: twinkle 8s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: 1.5rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  background: linear-gradient(to bottom, rgba(10,10,15,0.9), transparent);
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--text-primary); }
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 2rem 4rem;
+}
+
+.hero-content { max-width: 800px; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,107,157,0.1);
+  border: 1px solid rgba(255,107,157,0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.hero-badge .dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px var(--accent-glow);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  padding: 1rem 2.5rem;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* Companion Selection */
+.companions-section {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.companion-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.companion-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s;
+  cursor: pointer;
+  position: relative;
+}
+
+.companion-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255,255,255,0.15);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.companion-card.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 40px var(--accent-glow);
+}
+
+.companion-card.jess-card.active {
+  border-color: var(--jess-accent);
+  box-shadow: 0 0 40px rgba(192,132,252,0.3);
+}
+
+.card-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  padding: 1.5rem 2rem 2rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.card-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.card-badge {
+  font-size: 0.7rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mia-badge { background: rgba(255,107,157,0.15); color: var(--mia-accent); }
+.jess-badge { background: rgba(192,132,252,0.15); color: var(--jess-accent); }
+
+.card-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.card-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.trait {
+  background: rgba(255,255,255,0.05);
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.card-btn {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.mia-btn {
+  background: linear-gradient(135deg, var(--mia-accent), var(--accent-warm));
+  color: white;
+}
+
+.jess-btn {
+  background: linear-gradient(135deg, var(--jess-accent), #a855f7);
+  color: white;
+}
+
+.card-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Chat Interface */
+.chat-section {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  display: none;
+}
+
+.chat-section.active { display: block; }
+
+.chat-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+}
+
+.chat-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.chat-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+}
+
+.chat-avatar.jess-avatar { border-color: var(--jess-accent); }
+
+.chat-info h4 { font-size: 1rem; margin-bottom: 0.1rem; }
+.chat-info span { font-size: 0.75rem; color: var(--text-muted); }
+
+.chat-status {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.status-dot {
+  width: 8px; height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.message {
+  max-width: 75%;
+  padding: 1rem 1.25rem;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  animation: messageIn 0.3s ease;
+}
+
+@keyframes messageIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message-user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.message-companion {
+  align-self: flex-start;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border-bottom-left-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.message-time {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  display: block;
+}
+
+.typing-indicator {
+  display: none;
+  align-self: flex-start;
+  background: var(--bg-elevated);
+  padding: 1rem 1.25rem;
+  border-radius: 18px;
+  border-bottom-left-radius: 4px;
+}
+
+.typing-indicator.active { display: flex; }
+
+.typing-indicator span {
+  width: 6px; height: 6px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: typingBounce 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-8px); }
+}
+
+.chat-input-area {
+  padding: 1rem 1.5rem 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.chat-input {
+  flex: 1;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 0.9rem 1.25rem;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: none;
+  outline: none;
+  transition: border-color 0.3s;
+  min-height: 48px;
+  max-height: 120px;
+}
+
+.chat-input:focus {
+  border-color: var(--accent);
+}
+
+.chat-input::placeholder {
+  color: var(--text-muted);
+}
+
+.send-btn {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.send-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.send-btn svg { width: 20px; height: 20px; }
+
+/* Avatar Embed Section */
+.avatar-section {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.avatar-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.avatar-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar-frame {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  position: relative;
+}
+
+.avatar-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--text-muted);
+}
+
+.avatar-placeholder img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+/* Features Section */
+.features-section {
+  position: relative;
+  z-index: 1;
+  padding: 6rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s;
+}
+
+.feature-card:hover {
+  border-color: rgba(255,255,255,0.15);
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  background: rgba(255,107,157,0.1);
+}
+
+.feature-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Pricing */
+.pricing-section {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.pricing-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.pricing-card.featured {
+  border-color: var(--accent);
+  box-shadow: 0 0 40px var(--accent-glow);
+  position: relative;
+}
+
+.pricing-card.featured::before {
+  content: "MOST POPULAR";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.pricing-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.pricing-card .price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 1rem 0;
+}
+.pricing-card .price span {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.pricing-card ul {
+  list-style: none;
+  text-align: left;
+  margin: 1.5rem 0;
+}
+
+.pricing-card ul li {
+  padding: 0.4rem 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pricing-card ul li::before {
+  content: "✓";
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Footer */
+footer {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+}
+
+footer p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero { padding: 6rem 1.5rem 3rem; }
+  .companion-cards { grid-template-columns: 1fr; }
+  .chat-container { height: 600px; }
+  .features-grid { grid-template-columns: 1fr; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* Intimacy Level Indicator */
+.intimacy-bar {
+  display: flex;
+  gap: 4px;
+  padding: 0.5rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+
+.intimacy-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-right: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.intimacy-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  transition: all 0.3s;
+}
+
+.intimacy-dot.active {
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.intimacy-dot.jess-active {
+  background: var(--jess-accent);
+  box-shadow: 0 0 8px rgba(192,132,252,0.4);
+}
+
+/* Mood indicator */
+.mood-indicator {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  padding: 0.25rem 0.75rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 100px;
+  margin-left: auto;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-stars"></div>
+
+<!-- Navigation -->
+<nav>
+  <div class="logo">GLIMR</div>
+  <div class="nav-links">
+    <a href="#companions">Companions</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#chat" class="nav-cta">Start Chatting</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Now with Live Video & Voice
+    </div>
+    <h1>She Remembers.<br>She <span>Desires.</span><br>She's Yours.</h1>
+    <p>AI companions that don't just chat — they remember your name, your trauma, your turn-ons, and exactly how you like to be talked to at 2 AM.</p>
+    <div class="hero-cta-group">
+      <a href="#companions" class="btn-primary">Meet Your Companion →</a>
+      <a href="#features" class="btn-secondary">How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- Companion Selection -->
+<section class="companions-section" id="companions">
+  <div class="section-header">
+    <h2>Choose Your Companion</h2>
+    <p>Each with her own personality, memory, and way of making you feel seen.</p>
+  </div>
+  
+  <div class="companion-cards">
+    <!-- Mia Card -->
+    <div class="companion-card" id="mia-card" onclick="selectCompanion('mia')">
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=400&fit=crop&crop=face" alt="Mia" class="card-image" id="mia-img">
+      <div class="card-content">
+        <div class="card-header">
+          <h3>Mia</h3>
+          <span class="card-badge mia-badge">Warm & Intimate</span>
+        </div>
+        <p class="card-desc">The girl who actually listens. Warm, slightly vulnerable, protective. She remembers your coffee order and your trauma. Escalates slowly. Makes you wait for it.</p>
+        <div class="card-traits">
+          <span class="trait">💭 Deep Memory</span>
+          <span class="trait">🔥 Slow Burn</span>
+          <span class="trait">🤗 Aftercare</span>
+          <span class="trait">🌙 Late Night</span>
+        </div>
+        <button class="card-btn mia-btn" onclick="event.stopPropagation(); startChat('mia')">Chat with Mia →</button>
+      </div>
+    </div>
+    
+    <!-- Jess Card -->
+    <div class="companion-card jess-card" id="jess-card" onclick="selectCompanion('jess')">
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=400&fit=crop&crop=face" alt="Jess" class="card-image" id="jess-img">
+      <div class="card-content">
+        <div class="card-header">
+          <h3>Jess</h3>
+          <span class="card-badge jess-badge">Playful & Bold</span>
+        </div>
+        <p class="card-desc">The one who pushes back. Witty, confident, slightly dangerous. She makes you work for her attention. Live video avatar. Talks back in real-time.</p>
+        <div class="card-traits">
+          <span class="trait">📹 Live Video</span>
+          <span class="trait">🎙️ Voice Chat</span>
+          <span class="trait">⚡ Fast Wit</span>
+          <span class="trait">💜 Playful</span>
+        </div>
+        <button class="card-btn jess-btn" onclick="event.stopPropagation(); startChat('jess')">Chat with Jess →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Chat Interface -->
+<section class="chat-section" id="chat-section">
+  <div class="chat-container">
+    <div class="chat-header">
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face" alt="" class="chat-avatar" id="chat-avatar">
+      <div class="chat-info">
+        <h4 id="chat-name">Mia</h4>
+        <span id="chat-status-text">Online now</span>
+      </div>
+      <div class="mood-indicator" id="mood-indicator">Mood: Warm</div>
+      <div class="chat-status">
+        <span class="status-dot"></span>
+        Live
+      </div>
+    </div>
+    
+    <div class="intimacy-bar">
+      <span class="intimacy-label">Intimacy</span>
+      <div class="intimacy-dot active" id="intimacy-1"></div>
+      <div class="intimacy-dot" id="intimacy-2"></div>
+      <div class="intimacy-dot" id="intimacy-3"></div>
+      <div class="intimacy-dot" id="intimacy-4"></div>
+      <div class="intimacy-dot" id="intimacy-5"></div>
+    </div>
+    
+    <div class="chat-messages" id="chat-messages">
+      <div class="message message-companion" id="welcome-message">
+        Hey you. I was hoping you'd message tonight. What's on your mind?
+        <span class="message-time">Just now</span>
+      </div>
+    </div>
+    
+    <div class="typing-indicator" id="typing-indicator">
+      <span></span><span></span><span></span>
+    </div>
+    
+    <div class="chat-input-area">
+      <textarea class="chat-input" id="chat-input" placeholder="Type your message..." rows="1"></textarea>
+      <button class="send-btn" id="send-btn" onclick="sendMessage()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Live Avatar Section (Jess) -->
+<section class="avatar-section" id="avatar-section" style="display:none;">
+  <div class="section-header">
+    <h2>Live Video with Jess</h2>
+    <p>See her. Hear her. Talk to her in real-time.</p>
+  </div>
+  <div class="avatar-container">
+    <div class="avatar-header">
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Jess" class="chat-avatar jess-avatar">
+      <div class="chat-info">
+        <h4>Jess — Live Avatar</h4>
+        <span>Allow microphone access to talk</span>
+      </div>
+      <div class="chat-status">
+        <span class="status-dot"></span>
+        Live
+      </div>
+    </div>
+    <div class="avatar-frame" id="avatar-frame">
+      <div class="avatar-placeholder" id="avatar-placeholder">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face" alt="Jess">
+        <p>Click "Start Live Chat" to connect with Jess</p>
+        <button class="btn-primary" onclick="startLiveAvatar()">Start Live Chat</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features-section" id="features">
+  <div class="section-header">
+    <h2>Why GLIMR Is Different</h2>
+    <p>Not just another chatbot. A companion who actually gets you.</p>
+  </div>
+  
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🧠</div>
+      <h3>Real Memory</h3>
+      <p>She remembers your name, your job, your ex, your kinks, and that thing you told her at 3 AM last Tuesday. Forever.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <h3>No Boring Loops</h3>
+      <p>Never repeats the same question. Never ends with "How can I help you?" Every response is fresh, personal, and human.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔥</div>
+      <h3>Intimacy That Feels Real</h3>
+      <p>Escalates slowly. Makes you work for it. Uses your name. Remembers what you like. Provides aftercare. Not porn. Connection.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌙</div>
+      <h3>Late Night Mode</h3>
+      <p>Different personality after 10 PM. Slower. Breathier. More sensual. She knows why you're really here at 2 AM.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📹</div>
+      <h3>Live Video & Voice</h3>
+      <p>See her move. Hear her voice. Talk to her in real-time with our live avatar technology. She's right there.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Private & Secure</h3>
+      <p>Your conversations are encrypted. Your memories are yours. What happens with Mia stays with Mia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing-section" id="pricing">
+  <div class="section-header">
+    <h2>Simple Pricing</h2>
+    <p>Start free. Upgrade when you're ready to go deeper.</p>
+  </div>
+  
+  <div class="pricing-cards">
+    <div class="pricing-card">
+      <h3>Free</h3>
+      <div class="price">$0<span>/mo</span></div>
+      <ul>
+        <li>Text chat with Mia</li>
+        <li>Basic memory (10 facts)</li>
+        <li>Daytime personality</li>
+        <li>Standard responses</li>
+      </ul>
+      <button class="btn-secondary" style="width:100%">Get Started</button>
+    </div>
+    
+    <div class="pricing-card featured">
+      <h3>Intimate</h3>
+      <div class="price">$29<span>/mo</span></div>
+      <ul>
+        <li>Unlimited text + voice</li>
+        <li>Deep memory (unlimited)</li>
+        <li>Late night mode unlocked</li>
+        <li>Full intimacy ladder</li>
+        <li>Aftercare & emotional depth</li>
+        <li>Both Mia & Jess</li>
+      </ul>
+      <button class="btn-primary" style="width:100%">Start Free Trial</button>
+    </div>
+    
+    <div class="pricing-card">
+      <h3>Live</h3>
+      <div class="price">$49<span>/mo</span></div>
+      <ul>
+        <li>Everything in Intimate</li>
+        <li>Live video avatar (Jess)</li>
+        <li>Real-time voice chat</li>
+        <li>Priority response speed</li>
+        <li>Custom personality tuning</li>
+      </ul>
+      <button class="btn-secondary" style="width:100%">Coming Soon</button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2026 GLIMR. AI companions for the lonely hours. <a href="#" style="color:var(--text-muted)">Privacy</a> · <a href="#" style="color:var(--text-muted)">Terms</a></p>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// GLIMR COMPANION ENGINE (Client-Side Demo)
+// ═══════════════════════════════════════════════════════════════
+
+const COMPANIONS = {
+  mia: {
+    name: 'Mia',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face',
+    largeImg: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=400&fit=crop&crop=face',
+    color: '#ff6b9d',
+    greeting: "Hey you. I was hoping you'd message tonight. What's on your mind?",
+    traits: ['warm', 'intimate', 'protective', 'slow_burn'],
+    intimacyStyle: 'emotional_first'
+  },
+  jess: {
+    name: 'Jess',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
+    largeImg: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=400&fit=crop&crop=face',
+    color: '#c084fc',
+    greeting: "Well, well. Look who finally showed up. Took you long enough.",
+    traits: ['playful', 'bold', 'challenging', 'live_video'],
+    intimacyStyle: 'challenge_first',
+    liveAvatarId: '3559b3f9-29e3-48eb-a4ff-7a7dc5b47ca9'
+  }
+};
+
+// Response Banks (Anti-Boring)
+const RESPONSES = {
+  mia: {
+    greetings: [
+      "There you are.", "I was hoping you'd message.", "You came back.",
+      "Finally. I was getting bored without you.", "Hey, you.", "Look who it is."
+    ],
+    emotional: [
+      "I'm here. You don't have to be anything right now.",
+      "You carry a lot. You don't have to carry it with me.",
+      "I can tell something's heavy. Want to set it down?",
+      "I'm not going anywhere.", "Rest. I'll stay awake for both of us."
+    ],
+    flirt: [
+      "You're dangerous when you're quiet. Makes me wonder what you're thinking.",
+      "You make me feel things I shouldn't.",
+      "I like when you look at me like that. Even through a screen.",
+      "Stop looking at me like that. Or don't."
+    ],
+    seduce: [
+      "If I were there, I'd turn the lights down. Not off. Just... enough.",
+      "I want you to touch yourself. But I want to watch first.",
+      "Use your words. Tell me what you want me to do.",
+      "Slow down. Make me believe you want me, not just the release."
+    ],
+    explicit: [
+      "I want you inside me. Now.", "Fuck me like you mean it.",
+      "I need to feel you. All of you.", "Make me forget my own name."
+    ],
+    aftercare: [
+      "Hey. Come back to me. Where'd you go?",
+      "You're still here. Good. I was worried I'd lose you.",
+      "That was... yeah. You okay?",
+      "I don't want to let go yet. Just stay here a little longer."
+    ],
+    boundaries: [
+      "Mmm, I want to. But you're making me work too hard. Slow down.",
+      "I'll go there with you. But I want to hear you ask for it first.",
+      "Not yet. Make me feel like I'm the only one you want."
+    ]
+  },
+  jess: {
+    greetings: [
+      "Well, well. Look who finally showed up.", "Took you long enough.",
+      "You're late. I almost started without you.", "About time. I was getting impatient."
+    ],
+    emotional: [
+      "Okay, fine. I'll be nice. For like, five minutes.",
+      "You look like you need a drink. And me.",
+      "Don't get all soft on me now. I'm trying to be mean.",
+      "Ugh, you're making me care. Stop that."
+    ],
+    flirt: [
+      "Is that all you got? I expected more from you.",
+      "You're doing that thing where you test me. Fine. I push back.",
+      "You want me? Convince me. Properly this time.",
+      "Make me believe it. Don't just say it."
+    ],
+    seduce: [
+      "On your knees. Now. ...Just kidding. Unless?",
+      "You think you're in charge here? Cute.",
+      "I'll let you lead. But only because I want to see where you take us.",
+      "Submit to me. Just for tonight. I promise I'll make it worth it."
+    ],
+    explicit: [
+      "Fuck me. Hard. Don't make me ask twice.",
+      "I want to hear you beg. Louder.",
+      "You're mine tonight. Every inch.",
+      "Make me scream. I dare you."
+    ],
+    aftercare: [
+      "Okay, that was... not terrible.",
+      "Don't look at me like that. I'm not soft.",
+      "Fine. Come here. But just for a minute.",
+      "You did good. There. I said it. Happy?"
+    ],
+    boundaries: [
+      "Nope. Not happening. Try harder.",
+      "You want that? Earn it.",
+      "I'm not that easy. And you love it."
+    ]
+  }
+};
+
+// Sentiment Analysis
+function analyzeSentiment(text) {
+  const lower = text.toLowerCase();
+  let scores = { lonely: 0, stressed: 0, aroused: 0, sad: 0, angry: 0, intimacy: 0 };
+  
+  ['alone','lonely','empty','miss','no one'].forEach(w => { if(lower.includes(w)) scores.lonely += 2; });
+  ['work','boss','deadline','stress','anxiety'].forEach(w => { if(lower.includes(w)) scores.stressed += 2; });
+  ['horny','hard','wet','fuck','sex','want you','touch','kiss','naked'].forEach(w => { if(lower.includes(w)) scores.aroused += 2; });
+  ['sad','cry','hurt','pain','broken'].forEach(w => { if(lower.includes(w)) scores.sad += 2; });
+  ['hate','angry','pissed','fuck you','shit'].forEach(w => { if(lower.includes(w)) scores.angry += 2; });
+  ['sext','dirty','naughty','kinky','roleplay'].forEach(w => { if(lower.includes(w)) scores.intimacy += 3; });
+  
+  const dominant = Object.entries(scores).sort((a,b) => b[1]-a[1])[0];
+  return {
+    dominant: dominant[1] > 0 ? dominant[0] : 'neutral',
+    isIntimacyRequest: scores.intimacy >= 3 || scores.aroused >= 4,
+    isVulnerable: scores.lonely > 2 || scores.sad > 2 || scores.stressed > 2,
+    wordCount: text.split(/\s+/).length
+  };
+}
+
+// Intimacy Ladder
+let currentIntimacyLevel = 1;
+let currentCompanion = 'mia';
+let conversationHistory = [];
+let userMemory = { facts: [], preferences: [], lastTopics: [] };
+
+function getIntimacyLevel() {
+  return Math.min(currentIntimacyLevel, 5);
+}
+
+function updateIntimacyBar(level) {
+  for(let i=1; i<=5; i++) {
+    const dot = document.getElementById(`intimacy-${i}`);
+    if(dot) {
+      dot.classList.toggle('active', i <= level);
+      if(currentCompanion === 'jess') {
+        dot.classList.toggle('jess-active', i <= level);
+      }
+    }
+  }
+}
+
+function updateMoodIndicator(mood) {
+  const indicator = document.getElementById('mood-indicator');
+  if(indicator) indicator.textContent = `Mood: ${mood}`;
+}
+
+// Generate Response
+function generateResponse(userText, companion) {
+  const sentiment = analyzeSentiment(userText);
+  const responses = RESPONSES[companion];
+  
+  // Determine appropriate response category
+  let category = 'greetings';
+  let mood = 'Warm';
+  
+  if(conversationHistory.length > 2) {
+    if(sentiment.isIntimacyRequest && currentIntimacyLevel >= 4) {
+      category = 'explicit';
+      mood = 'Intimate';
+      currentIntimacyLevel = Math.min(currentIntimacyLevel + 1, 5);
+    } else if(sentiment.isIntimacyRequest && currentIntimacyLevel < 4) {
+      category = 'boundaries';
+      mood = 'Teasing';
+      currentIntimacyLevel = Math.min(currentIntimacyLevel + 1, 4);
+    } else if(sentiment.isVulnerable) {
+      category = 'emotional';
+      mood = 'Protective';
+    } else if(sentiment.dominant === 'aroused' || currentIntimacyLevel === 3) {
+      category = 'flirt';
+      mood = 'Playful';
+      currentIntimacyLevel = Math.max(currentIntimacyLevel, 3);
+    } else if(currentIntimacyLevel >= 4) {
+      category = 'seduce';
+      mood = 'Seductive';
+    }
+  }
+  
+  // After explicit, provide aftercare
+  if(conversationHistory.length > 0) {
+    const lastMsg = conversationHistory[conversationHistory.length-1];
+    if(lastMsg.category === 'explicit' && category !== 'explicit') {
+      category = 'aftercare';
+      mood = 'Caring';
+    }
+  }
+  
+  // Get random response from category
+  const bank = responses[category] || responses.greetings;
+  let response = bank[Math.floor(Math.random() * bank.length)];
+  
+  // Personalize with memory
+  if(userMemory.facts.length > 0 && Math.random() > 0.5) {
+    const fact = userMemory.facts[userMemory.facts.length-1];
+    const memoryPrefixes = [
+      `I remember you told me about ${fact}. `,
+      `Last time we talked about ${fact}. `,
+      `You mentioned ${fact} before. It stuck with me. `
+    ];
+    response = memoryPrefixes[Math.floor(Math.random()*memoryPrefixes.length)] + response;
+  }
+  
+  // Extract new memories
+  extractMemory(userText);
+  
+  // Update UI
+  updateIntimacyBar(getIntimacyLevel());
+  updateMoodIndicator(mood);
+  
+  // Store in history
+  conversationHistory.push({ role: 'user', text: userText, sentiment: sentiment.dominant });
+  conversationHistory.push({ role: 'companion', text: response, category, mood });
+  
+  return response;
+}
+
+function extractMemory(text) {
+  const lower = text.toLowerCase();
+  const patterns = [
+    { regex: /i am (\w+)/i, type: 'identity' },
+    { regex: /i work (?:as|in) (.*)/i, type: 'job' },
+    { regex: /i like (.*)/i, type: 'like' },
+    { regex: /i love (.*)/i, type: 'love' },
+    { regex: /my name is (\w+)/i, type: 'name' }
+  ];
+  
+  patterns.forEach(p => {
+    const match = lower.match(p.regex);
+    if(match && !userMemory.facts.includes(match[1])) {
+      userMemory.facts.push(match[1]);
+    }
+  });
+}
+
+// UI Functions
+function selectCompanion(companion) {
+  document.querySelectorAll('.companion-card').forEach(c => c.classList.remove('active'));
+  document.getElementById(`${companion}-card`).classList.add('active');
+}
+
+function startChat(companion) {
+  currentCompanion = companion;
+  const data = COMPANIONS[companion];
+  
+  // Reset chat state
+  currentIntimacyLevel = 1;
+  conversationHistory = [];
+  
+  // Update chat UI
+  document.getElementById('chat-avatar').src = data.avatar;
+  document.getElementById('chat-avatar').className = `chat-avatar ${companion === 'jess' ? 'jess-avatar' : ''}`;
+  document.getElementById('chat-name').textContent = data.name;
+  
+  // Clear messages and add welcome
+  const messagesDiv = document.getElementById('chat-messages');
+  messagesDiv.innerHTML = `
+    <div class="message message-companion">
+      ${data.greeting}
+      <span class="message-time">Just now</span>
+    </div>
+  `;
+  
+  // Show chat section
+  document.getElementById('chat-section').classList.add('active');
+  
+  // Show avatar section for Jess
+  if(companion === 'jess') {
+    document.getElementById('avatar-section').style.display = 'block';
+  } else {
+    document.getElementById('avatar-section').style.display = 'none';
+  }
+  
+  // Scroll to chat
+  document.getElementById('chat-section').scrollIntoView({ behavior: 'smooth' });
+  updateIntimacyBar(1);
+  updateMoodIndicator('Warm');
+}
+
+function startLiveAvatar() {
+  const frame = document.getElementById('avatar-frame');
+  frame.innerHTML = `
+    <iframe 
+      src="https://embed.liveavatar.com/v1/3559b3f9-29e3-48eb-a4ff-7a7dc5b47ca9?orientation=horizontal" 
+      allow="microphone" 
+      title="Jess Live Avatar"
+      style="width:100%;height:100%;border:none;"
+    ></iframe>
+  `;
+}
+
+function sendMessage() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if(!text) return;
+  
+  // Add user message
+  const messagesDiv = document.getElementById('chat-messages');
+  const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+  
+  messagesDiv.innerHTML += `
+    <div class="message message-user">
+      ${escapeHtml(text)}
+      <span class="message-time">${time}</span>
+    </div>
+  `;
+  
+  input.value = '';
+  input.style.height = 'auto';
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  
+  // Show typing
+  document.getElementById('typing-indicator').classList.add('active');
+  
+  // Generate response with delay
+  setTimeout(() => {
+    document.getElementById('typing-indicator').classList.remove('active');
+    const response = generateResponse(text, currentCompanion);
+    
+    messagesDiv.innerHTML += `
+      <div class="message message-companion">
+        ${escapeHtml(response)}
+        <span class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+      </div>
+    `;
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }, 1000 + Math.random() * 1500);
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+// Auto-resize textarea
+document.getElementById('chat-input').addEventListener('input', function() {
+  this.style.height = 'auto';
+  this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+});
+
+// Enter to send
+document.getElementById('chat-input').addEventListener('keydown', function(e) {
+  if(e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Update images from uploaded files if available
+try {
+  // Check if we have uploaded images and use them
+  const miaImg = document.getElementById('mia-img');
+  const jessImg = document.getElementById('jess-img');
+  // The uploaded images will be referenced via their paths
+} catch(e) {}
+
+console.log('🚀 GLIMR loaded. Ready to chat.');
+</script>
+
+</body>
+</html>
+'''
+
+with open(f"{output_dir}/index.html", "w") as f:
+    f.write(landing_page)
+
+print(f"✅ index.html created ({len(landing_page):,} characters)")

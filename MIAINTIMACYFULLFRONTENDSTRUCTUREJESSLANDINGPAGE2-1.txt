@@ -1,0 +1,16 @@
+
+# Fix the escape sequence warning and create a proper assets folder with the uploaded images
+import shutil
+
+output_dir = "/mnt/agents/output/glimr-landing-page"
+os.makedirs(f"{output_dir}/images", exist_ok=True)
+
+# Copy uploaded images to the output folder
+shutil.copy("/mnt/agents/upload/image-1 (3).png", f"{output_dir}/images/mia.png")
+shutil.copy("/mnt/agents/upload/Woman in silk robe.png", f"{output_dir}/images/jess.png")
+shutil.copy("/mnt/agents/upload/avatar-shot-20260705-a2b9f09f.mp4", f"{output_dir}/images/jess-video.mp4")
+
+print("✅ Images copied to images/ folder")
+print("  - mia.png")
+print("  - jess.png") 
+print("  - jess-video.mp4")

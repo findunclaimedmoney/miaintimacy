@@ -1,0 +1,45 @@
+✅ Directory structure created.
+
+📁 GLIMR Companion Engine - File Structure
+==================================================
+
+glimr-companion-engine/
+├── server.js                    ← Main entry point
+├── package.json                 ← Dependencies
+├── .env.example                 ← Environment variables template
+│
+├── config/
+│   └── database.js              ← MongoDB connection
+│
+├── models/
+│   ├── User.js                  ← User schema
+│   ├── Memory.js                ← Memory bank schema
+│   ├── Conversation.js          ← Chat history schema
+│   └── CompanionProfile.js      ← Companion personality config
+│
+├── services/
+│   ├── OpenAIService.js         ← GPT-4o integration
+│   ├── MemoryEngine.js          ← Memory retrieval & storage
+│   ├── ContextEngine.js         ← Mood & strategy detection
+│   ├── ResponseVariator.js      ← Anti-boring variation system
+│   └── IntimacyLadder.js        ← Escalation level management
+│
+├── routes/
+│   ├── chat.js                  ← /api/chat endpoints
+│   ├── auth.js                  ← /api/auth endpoints
+│   ├── memory.js                ← /api/memory endpoints
+│   └── companion.js             ← /api/companion config endpoints
+│
+├── middleware/
+│   ├── auth.js                  ← JWT verification
+│   └── rateLimiter.js           ← Request throttling
+│
+├── utils/
+│   ├── sentimentAnalyzer.js     ← Detect user emotional state
+│   ├── timeUtils.js             ← Time-of-day modes
+│   └── validators.js            ← Input validation
+│
+└── prompts/
+    ├── systemPrompts.js         ← Mia's personality definitions
+    ├── intimacyPrompts.js       ← Dirty talk templates
+    └── responseTemplates.js     ← Variation banks
