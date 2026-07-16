@@ -1,11 +1,5 @@
 
-import os
-
-output_dir = "/mnt/agents/output/glimr-landing-page"
-os.makedirs(output_dir, exist_ok=True)
-
-# The complete landing page - single HTML file with everything inline
-landing_page = '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -1448,9 +1442,3 @@ console.log('🚀 GLIMR loaded. Ready to chat.');
 
 </body>
 </html>
-'''
-
-with open(f"{output_dir}/index.html", "w") as f:
-    f.write(landing_page)
-
-print(f"✅ index.html created ({len(landing_page):,} characters)")
