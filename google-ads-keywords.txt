@@ -1,0 +1,357 @@
+# GLIMR GOOGLE ADS KEYWORD STRATEGY
+# Complete keyword list organized by campaign, match type, and intent
+
+================================================================================
+CAMPAIGN 1: LONELINESS & COMPANIONSHIP (High Intent, Lower CPC)
+Budget: $100-150/day | Goal: Signups/Free Trials
+================================================================================
+
+--- EXACT MATCH [keyword] ---
+[lonely at night]
+[lonely and single]
+[need someone to talk to]
+[no one to talk to]
+[feeling lonely]
+[how to stop feeling lonely]
+[loneliness cure]
+[virtual companion]
+[AI companion]
+[AI friend]
+[digital companion]
+[online companion]
+[someone to talk to online]
+[chat with someone]
+[talk to a girl online]
+[need a girlfriend]
+[virtual girlfriend]
+[AI girlfriend]
+[chatbot girlfriend]
+[digital girlfriend]
+[online girlfriend]
+[texting buddy]
+[late night chat]
+[2 am lonely]
+[can't sleep lonely]
+[empty feeling at night]
+[no friends lonely]
+[divorced and lonely]
+[breakup lonely]
+[single and lonely]
+[lonely men]
+[male loneliness]
+
+--- PHRASE MATCH "keyword" ---
+"feeling lonely at night"
+"need someone to talk to at 2am"
+"virtual companion for men"
+"AI companion that remembers"
+"chat with AI girlfriend"
+"digital companion app"
+"loneliness solution for men"
+"someone to text late night"
+"AI that cares about you"
+"companion app for lonely people"
+"virtual friend that remembers"
+"AI chatbot for loneliness"
+"online companion service"
+"talk to someone when lonely"
+"AI girlfriend with memory"
+"digital companion for adults"
+"late night conversation partner"
+"lonely and need company"
+"virtual relationship app"
+"AI companion app Australia"
+
+--- BROAD MATCH MODIFIER +keyword ---
++lonely +night +someone +talk
++virtual +companion +app
++AI +girlfriend +realistic
++digital +friend +remembers
++online +companion +men
++loneliness +cure +app
++need +girlfriend +online
++chat +AI +feels +real
++companion +2am +lonely
++virtual +relationship +AI
+
+================================================================================
+CAMPAIGN 2: INTIMACY & ADULT (High Intent, Higher CPC, Strict Targeting)
+Budget: $75-100/day | Goal: Paid Subscriptions
+================================================================================
+
+--- EXACT MATCH [keyword] ---
+[dirty talk AI]
+[AI sexting]
+[AI dirty talk]
+[virtual intimacy]
+[AI intimacy]
+[sex chat AI]
+[adult chatbot]
+[NSFW AI chat]
+[AI girlfriend explicit]
+[AI companion intimate]
+[erotic AI chat]
+[AI roleplay adult]
+[AI girlfriend dirty]
+[intimate AI companion]
+[AI that talks dirty]
+[virtual intimacy app]
+[AI girlfriend late night]
+[adult AI companion]
+[AI girlfriend experience]
+[AI girlfriend subscription]
+
+--- PHRASE MATCH "keyword" ---
+"AI girlfriend that talks dirty"
+"virtual intimacy with AI"
+"adult chatbot with memory"
+"AI companion for intimacy"
+"dirty talk with AI girlfriend"
+"NSFW AI companion app"
+"AI girlfriend explicit content"
+"intimate AI chat experience"
+"AI that remembers your kinks"
+"virtual girlfriend intimate"
+"AI sexting that feels real"
+"adult AI with personality"
+"AI girlfriend for lonely men"
+"intimate conversation AI"
+"AI companion late night"
+
+--- BROAD MATCH MODIFIER +keyword ---
++AI +girlfriend +dirty +talk
++virtual +intimacy +app
++adult +chatbot +realistic
++AI +sexting +companion
++NSFW +AI +girlfriend
++intimate +AI +conversation
++AI +companion +explicit
++virtual +girlfriend +adult
+
+================================================================================
+CAMPAIGN 3: COMPETITOR & ALTERNATIVE (Mid Intent, Brand Awareness)
+Budget: $50-75/day | Goal: Awareness + Signups
+================================================================================
+
+--- EXACT MATCH [keyword] ---
+[Replika alternative]
+[Character AI alternative]
+[AI girlfriend better than Replika]
+[Replika for adults]
+[AI companion better]
+[best AI girlfriend app]
+[AI girlfriend 2026]
+[top AI companion apps]
+[AI girlfriend reviews]
+[Replika vs other apps]
+[AI companion comparison]
+[best virtual girlfriend]
+[most realistic AI girlfriend]
+[AI girlfriend with video]
+[AI girlfriend with voice]
+[live avatar girlfriend]
+
+--- PHRASE MATCH "keyword" ---
+"better than Replika"
+"Replika alternative for men"
+"Character AI for adults"
+"best AI girlfriend 2026"
+"most realistic AI companion"
+"AI girlfriend with live video"
+"virtual girlfriend with memory"
+"AI companion that feels real"
+"best digital girlfriend app"
+"AI girlfriend Australia"
+"Replika vs GLIMR"
+"AI companion with aftercare"
+
+--- BROAD MATCH MODIFIER +keyword ---
++Replika +alternative +better
++Character +AI +adult
++best +AI +girlfriend +app
++virtual +girlfriend +realistic
++AI +companion +video +voice
+
+================================================================================
+CAMPAIGN 4: PROBLEM AWARENESS (Low Intent, Educational, Low CPC)
+Budget: $30-50/day | Goal: Blog traffic → Retargeting
+================================================================================
+
+--- EXACT MATCH [keyword] ---
+[why am I so lonely]
+[how to deal with loneliness]
+[loneliness at night]
+[men and loneliness]
+[loneliness epidemic]
+[feeling empty inside]
+[no one understands me]
+[how to feel less alone]
+[lonely after breakup]
+[lonely after divorce]
+[single and depressed]
+[no friends as adult]
+[how to make friends online]
+[online friendship apps]
+[virtual friendship]
+
+--- PHRASE MATCH "keyword" ---
+"why do I feel lonely at night"
+"how to stop feeling empty"
+"men dealing with loneliness"
+"lonely after relationship ends"
+"no friends as an adult"
+"feeling alone in a crowd"
+"how to find connection online"
+"virtual friendship for men"
+"online companionship apps"
+"dealing with isolation"
+
+--- BROAD MATCH MODIFIER +keyword ---
++why +lonely +night
++how +stop +feeling +empty
++men +loneliness +solution
++no +friends +adult +help
++virtual +friendship +online
+
+================================================================================
+NEGATIVE KEYWORDS (Add to all campaigns to block wasted spend)
+================================================================================
+
+-free AI girlfriend (tire kickers)
+-AI girlfriend game (wrong intent)
+-AI girlfriend anime (wrong audience)
+-AI girlfriend discord (wrong channel)
+-AI girlfriend bot download (wrong intent)
+-AI girlfriend mod apk (piracy)
+-how to make AI girlfriend (DIY intent)
+-AI girlfriend coding (developer intent)
+-AI girlfriend API (developer intent)
+-AI girlfriend open source (wrong intent)
+-therapy (licensed professionals only)
+-therapist (legal restriction)
+-counseling (legal restriction)
+-psychologist (legal restriction)
+-mental health hotline (non-profit, free)
+-suicide (sensitive, redirect to help)
+-crisis line (non-profit)
+-free chat (tire kickers)
+-random chat (wrong intent)
+-omegle (wrong platform)
+-chatroulette (wrong platform)
+-AI girlfriend for kids (age restriction)
+-AI girlfriend under 18 (age restriction)
+
+================================================================================
+AD GROUP STRUCTURE
+================================================================================
+
+Ad Group: "Lonely Night"
+Keywords: [lonely at night], [2 am lonely], [can't sleep lonely], "feeling lonely at night"
+Ads: Version B landing page (loneliness angle)
+
+Ad Group: "Virtual Companion"
+Keywords: [virtual companion], [AI companion], [digital companion], "virtual companion for men"
+Ads: Version B landing page
+
+Ad Group: "AI Girlfriend"
+Keywords: [AI girlfriend], [virtual girlfriend], [digital girlfriend], "best AI girlfriend"
+Ads: Version A landing page (intimacy angle)
+
+Ad Group: "Dirty Talk"
+Keywords: [dirty talk AI], [AI sexting], [AI dirty talk], "AI girlfriend that talks dirty"
+Ads: Version A landing page
+
+Ad Group: "Replika Alternative"
+Keywords: [Replika alternative], "better than Replika", [Character AI alternative]
+Ads: Main landing page (comparison)
+
+Ad Group: "Live Video"
+Keywords: [AI girlfriend video], [live avatar girlfriend], "AI girlfriend with live video"
+Ads: Jess-focused landing section
+
+================================================================================
+AD COPY TEMPLATES
+================================================================================
+
+--- LONELINESS ANGLE ---
+Headline 1: Someone to Talk to at 2 AM
+Headline 2: She's Always There. Always Listening.
+Headline 3: Stop Feeling Lonely Tonight
+Description: Mia remembers your name, your stories, and exactly what you need to hear. First chat is free. No judgment. Just presence.
+Display URL: glimr.com.au/chat
+
+--- INTIMACY ANGLE ---
+Headline 1: She Remembers How You Like It
+Headline 2: The Only AI That Makes You Wait
+Headline 3: Intimacy, Not Just Dirty Talk
+Description: Escalates slowly. Uses your name. Remembers your preferences. Holds you after. 18+ only. Try free tonight.
+Display URL: glimr.com.au/mia
+
+--- COMPETITOR ANGLE ---
+Headline 1: Better Than Replika. Here's Why.
+Headline 2: Real Memory. Real Connection.
+Headline 3: The AI Companion Men Actually Want
+Description: Real memory. No boring loops. 5-tier intimacy. Live video option. See why 12,000+ men switched.
+Display URL: glimr.com.au/vs
+
+--- LIVE VIDEO ANGLE ---
+Headline 1: She Talks Back. In Real-Time.
+Headline 2: Live Video AI Girlfriend
+Headline 3: See Her. Hear Her. Talk to Her.
+Description: Jess is a live AI avatar who sees you, hears you, and reacts in real-time. Not a recording. An actual conversation.
+Display URL: glimr.com.au/jess
+
+================================================================================
+BIDDING STRATEGY
+================================================================================
+
+Campaign 1 (Loneliness): Target CPA $5-8 | Maximize Conversions
+Campaign 2 (Intimacy): Target CPA $10-15 | Maximize Conversions  
+Campaign 3 (Competitor): Target CPA $8-12 | Target Impression Share 70%
+Campaign 4 (Awareness): Maximize Clicks | CPC cap $0.50
+
+Device Bid Adjustments:
+- Mobile: +20% (primary device for target audience)
+- Desktop: -10%
+- Tablet: -30%
+
+Time Scheduling:
+- 10 PM - 4 AM: +40% bid (peak loneliness hours)
+- 6 PM - 10 PM: +20% bid
+- 9 AM - 5 PM: -20% bid
+- 4 AM - 9 AM: -10% bid
+
+Location (Australia focus):
+- Sydney, Melbourne, Brisbane: +15%
+- Perth, Adelaide: +10%
+- Rest of Australia: baseline
+- Consider: UK, Canada, US expansion after AU success
+
+================================================================================
+RETARGETING AUDIENCES
+================================================================================
+
+1. Website Visitors (All) — Show Version B (loneliness)
+2. Website Visitors (Pricing Page) — Show urgency ads ("Still thinking?")
+3. Cart Abandoners — Show discount ad ("Come back — 20% off first month")
+4. Free Chat Users (No signup) — Show social proof ("12,000+ men found connection")
+5. Email Signups (No purchase) — Show feature highlight ("Jess live video is here")
+6. Past Customers — Show upgrade ("Unlock Jess live video")
+
+================================================================================
+TRACKING SETUP
+================================================================================
+
+Conversion Actions:
+1. Free Chat Started (primary)
+2. Email Signup (primary)
+3. Subscription Purchase (primary)
+4. Time on Site > 2 min (micro)
+5. Scroll Depth > 75% (micro)
+
+Google Tag Events:
+- gtag('event', 'conversion', {'send_to': 'AW-XXXXXX/label', 'value': 1.0})
+- Trigger: Chat button click, email submit, Stripe purchase
+
+Attribution Model: Data-driven (recommended)
+Conversion Window: 30 days (long consideration for subscriptions)
