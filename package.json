@@ -1,4 +1,4 @@
-
+ {
   "name": "glimr-companion-engine",
   "version": "1.0.0",
   "description": "AI Companion Engine with Memory-Driven Erotic Authenticity",
@@ -30,5 +30,3 @@
   "engines": {
     "node": ">=18.0.0"
   }
-
-
