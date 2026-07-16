@@ -315,9 +315,6 @@ Either way, keep doing what you're doing. The world needs more honest voices.
 — [John Morgan]
 GLIMR Founder
 https://glimr.com.au
-'''
 
-with open(f"{output_dir}/promo/social-media-promo.txt", "w") as f:
-    f.write(social_promo)
 
-print("✅ social-media-promo.txt created")
+
